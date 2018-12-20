@@ -10,6 +10,12 @@ from collections import deque
 
 env_to_use = 'LunarLander-v2'
 
+
+
+
+
+# Adapted from https://gist.github.com/heerad/d2b92c2f3a83b5e4be395546c17b274c
+
 gamma = 0.99  # reward discount factor
 h1 = 512  # hidden layer 1 size
 h2 = 512  # hidden layer 2 size
