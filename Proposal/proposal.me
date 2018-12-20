@@ -1,0 +1,57 @@
+# Introduction
+
+## Reinforcement Learning
+
+Reinforcement learning is a subarea of machine learning where an agent learns to do tasks by learning and acting in an interactive environment. It had a great progress during the past few years due to the applicability of deep neural network models in machine learning. In deep reinforcement learning (DRL) we model the "brain" of the agent with a neural network. The agent interacts with the environment and the weights of this neural network are being updated. DRL models are generally optimized using policy gradient, or actor-critic methods. We are not going to discuss this area more here, since the project purpose just needs a basic understanding of deep reinforcement learning.
+
+## Edge Computing
+
+Huge usage of the cloud computing, growth of internet, and accordingly the need for more bandwidth and less latency are principal causes of the recently introduced concept, edge computing. Edge computing is the practice of bringing and processing data at the edge of the network, rather than the cloud itself. There are a lots of applications and potential future usage that can be further optimized using edge computing. An application which motivates this project is the Amazon's Prime Air project. In this project, amazon's drone are automatically deliver packages to the customers. Inspired by this project and the potential applicability of DRL as the brain of these drones in the future, we are motivated to designing an efficient and well hardware optimized system for this package delivery or any similar robotic system. 
+
+
+
+# Problem Definition and The Proposed approach
+
+The purpose of the project is to design an energy efficient system for DRL agents that leverages both the cloud and the network edge. During the whole project we consider the Amazon's Prime Air scheme as a key potential application. We design a very basic delivery system in which the agent is modelled with a deep neural network. 
+
+The agent should process its environment in real time. We define the state of the agent by the inputs of its sensors, or the camera. Since we assume "brain" of the agents are all designed in the same way, there are two options to put the agent model (its brain) on a cloud or an edge server. Since the agent should behave in real time, latency becomes important. Agents use WAN for their connection. Therefore, the bandwidth is another issue. So, it seems that the better option is to use an edge server for the agents' brains. The delivery system itself which here is the system that queue and store queries, process them and provide tasks for the agents and it is not critical to be with super low latency could be developed on the cloud. Inspired by the name of actor-critic in reinforcement learning, we call this design an actor-commander system.
+
+We mention that the training process of agents is not done in the network edge. In another words, the trial and errors that an agent does during its training will be done in a company. So, we are not solving "training" phase of a machine learning problem using edge computing. We are discriminating between a trained machine learning model and the other parts of a delivery system, and put the model (which is the agent's brain) on the network edge to provide lower latency, lower bandwidth cost, and lower battery and hardware consumption. Sharing the brains of these agents will also provide the opportunity of parallel or batch processing of the agent's actions.
+
+It is worth noting that there are several practical considerations here. We think the most important one which is surveyed in other studies for other systems, is the possibility of separating an agent's brain and put it on an edge server. Will the latency of the edge cause the agent to be damaged in critical situations? Or what happens if the agent get disconnected from the edge or cloud server? Don't we need a copy of its brain in the robot itself too?
+
+
+
+These are the problems that we want to study in the project. So the timeline that we consider for this project is as follows:
+
+
+
+- Train an agent which is modeled with a deep neural network using particular actor-critic/policy gradient methods which are state of the art in DRL.
+
+- Run a comrehensive study of the delay between seeing the state of the environment, choosing and acting in an environment (action and state are standard terms in RL).
+
+- Answer to the questions like the necessity of migiration or pre-migration cost for the agents during the delivery process, etc. 
+
+- Experiment the possibility of bringing the agent's brain to an edge server using the obtained latencies, the needed battery and energy estimations
+
+- Simulate a simple network consist of multiple edge hosts and a cloud host with multiple moving drones.
+
+- Implement a simple delivery system using possion process and observe the upsides and downsides of this design
+
+
+
+Unfortunately there are few papers that are directly related to this topic. A related paper is DeepCham, a paper that was presented in the class and was a similar application except that the devices in that paper are mobiles. There are several paper that tried to bring the concepts of reinforcement learning for optimization of the network edge parameters. Most of these works can be done with a simple probabilistic model, since collecting and analyzing the data is faster than reinforcement learning in these environments, I think. The purpose of this work, however is not to train agents to optimize the network or hardware parameters. (NEED SOME FEEDBACKS ABOUT THIS PART!)
+
+
+
+References:
+
+- Li, Dawei, et al. "Deepcham: Collaborative edge-mediated adaptive deep learning for mobile object recognition." Edge Computing (SEC), IEEE/ACM Symposium on. IEEE, 2016.
+
+- Huang, Liang, Suzhi Bi, and Ying-Jun Angela Zhang. "Deep Reinforcement Learning for Online Offloading in Wireless Powered Mobile-Edge Computing Networks." arXiv preprint arXiv:1808.01977 (2018).
+
+- Sutton, Richard S., et al. "Policy gradient methods for reinforcement learning with function approximation." Advances in neural information processing systems. 2000.
+
+- Konda, Vijay R., and John N. Tsitsiklis. "Actor-critic algorithms." Advances in neural information processing systems. 2000.
+
+
